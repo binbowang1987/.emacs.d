@@ -47,7 +47,9 @@
 ;; GROUP: Editing -> Undo -> Undo Tree
 (use-package undo-tree
   :init
-  (global-undo-tree-mode 1))
+  (global-undo-tree-mode 1)
+  :custom
+  (undo-tree-auto-save-history nil))
 
 
 ;; Package: yasnippet
@@ -77,9 +79,7 @@
   (add-hook 'fundamental-mode 'ws-butler-mode))
 
 ;; PACKAGE: comment-dwim-2
-(use-package comment-dwim-2
-  :bind (("M-;" . comment-dwim-2))
-  )
+(global-set-key (kbd "M-;") 'comment-dwim-2)
 
 ;; PACKAGE: anzu
 ;; GROUP: Editing -> Matching -> Isearch -> Anzu
@@ -217,42 +217,42 @@ indent yanked text (with prefix arg don't indent)."
 
 (global-set-key (kbd "C-c i") 'indent-region-or-buffer)
 
-;; add duplicate line function from Prelude
-;; taken from prelude-core.el
-(defun prelude-get-positions-of-line-or-region ()
-  "Return positions (beg . end) of the current line
-or region."
-  (let (beg end)
-    (if (and mark-active (> (point) (mark)))
-        (exchange-point-and-mark))
-    (setq beg (line-beginning-position))
-    (if mark-active
-        (exchange-point-and-mark))
-    (setq end (line-end-position))
-    (cons beg end)))
+;; ;; add duplicate line function from Prelude
+;; ;; taken from prelude-core.el
+;; (defun prelude-get-positions-of-line-or-region ()
+;;   "Return positions (beg . end) of the current line
+;; or region."
+;;   (let (beg end)
+;;     (if (and mark-active (> (point) (mark)))
+;;         (exchange-point-and-mark))
+;;     (setq beg (line-beginning-position))
+;;     (if mark-active
+;;         (exchange-point-and-mark))
+;;     (setq end (line-end-position))
+;;     (cons beg end)))
 
-;; smart openline
-(defun prelude-smart-open-line (arg)
-  "Insert an empty line after the current line.
-Position the cursor at its beginning, according to the current mode.
-With a prefix ARG open line above the current line."
-  (interactive "P")
-  (if arg
-      (prelude-smart-open-line-above)
-    (progn
-      (move-end-of-line nil)
-      (newline-and-indent))))
+;; ;; smart openline
+;; (defun prelude-smart-open-line (arg)
+;;   "Insert an empty line after the current line.
+;; Position the cursor at its beginning, according to the current mode.
+;; With a prefix ARG open line above the current line."
+;;   (interactive "P")
+;;   (if arg
+;;       (prelude-smart-open-line-above)
+;;     (progn
+;;       (move-end-of-line nil)
+;;       (newline-and-indent))))
 
-(defun prelude-smart-open-line-above ()
-  "Insert an empty line above the current line.
-Position the cursor at it's beginning, according to the current mode."
-  (interactive)
-  (move-beginning-of-line nil)
-  (newline-and-indent)
-  (forward-line -1)
-  (indent-according-to-mode))
+;; (defun prelude-smart-open-line-above ()
+;;   "Insert an empty line above the current line.
+;; Position the cursor at it's beginning, according to the current mode."
+;;   (interactive)
+;;   (move-beginning-of-line nil)
+;;   (newline-and-indent)
+;;   (forward-line -1)
+;;   (indent-according-to-mode))
 
-(global-set-key (kbd "M-o") 'prelude-smart-open-line)
-(global-set-key (kbd "M-o") 'open-line)
+;; (global-set-key (kbd "M-o") 'prelude-smart-open-line)
+;; (global-set-key (kbd "M-o") 'open-line)
 
 (provide 'setup-editing)
