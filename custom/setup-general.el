@@ -1,8 +1,8 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-(toggle-scroll-bar -1)
+;; (toggle-scroll-bar -1)
 (setq scroll-bar-mode nil)
-(set-scroll-bar-mode nil)
+;; (set-scroll-bar-mode nil)
 
 (setq gc-cons-threshold 100000000)
 (setq inhibit-startup-message t)
@@ -38,12 +38,13 @@
 ;; company
 (use-package company
   :init
-  (global-company-mode 1)
   (setq company-idle-delay 0.1)
   (setq company-minimum-prefix-length 2)
   (setq company-auto-commit nil) ;;do not complelte when input SPC
   ;;(delete 'company-semantic company-backends)
   )
+(add-hook 'after-init-hook 'global-company-mode)
+
 ;; (define-key c-mode-map  [(control tab)] 'company-complete)
 ;; (define-key c++-mode-map  [(control tab)] 'company-complete)
 
@@ -96,6 +97,7 @@
   :init
   (setq treemacs-read-string-input 'from-minibuffer)
   (setq treemacs-filewatch-mode -1)
+  (setq treemacs-git-mode nil)
   :bind
   (("M-0" . treemacs-select-window)))
 
@@ -135,6 +137,5 @@
   (setq which-key-show-early-on-C-h t
         which-key-idle-delay 200
         which-key-idle-secondary-delay 0.05))
-
 
 (provide 'setup-general)

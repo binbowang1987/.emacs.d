@@ -27,15 +27,15 @@
 ;;       '((top . 497) (left . 1260) (width . 1336) (height . 1313)))
 
 ;; unit: characters
-;; (defconst frame-default-top     500  "The 'top'  position property of a frame.")
-;; (defconst frame-default-left    1300  "The 'left' position property of a frame.")
-;; (defconst frame-default-height  50  "The default frame height.")
-;; (defconst frame-default-width   100  "The default frame width.")
+(defconst frame-default-top     500  "The 'top'  position property of a frame.")
+(defconst frame-default-left    1300  "The 'left' position property of a frame.")
+(defconst frame-default-height  50  "The default frame height.")
+(defconst frame-default-width   100  "The default frame width.")
 
-;; (add-to-list 'default-frame-alist (cons 'left   frame-default-left))
-;; (add-to-list 'default-frame-alist (cons 'top    frame-default-top))
-;; (add-to-list 'default-frame-alist (cons 'height frame-default-height))
-;; (add-to-list 'default-frame-alist (cons 'width  frame-default-width))
+(add-to-list 'default-frame-alist (cons 'left   frame-default-left))
+(add-to-list 'default-frame-alist (cons 'top    frame-default-top))
+(add-to-list 'default-frame-alist (cons 'height frame-default-height))
+(add-to-list 'default-frame-alist (cons 'width  frame-default-width))
 
 (require 'docstr)
 (global-docstr-mode t)
@@ -57,6 +57,7 @@
 (setq use-package-always-ensure t)
 
 ;; (set-face-attribute 'default nil :family "Consolas" :height 120)
+(set-face-attribute 'default nil :height 140)
 
 (add-to-list 'load-path "~/.emacs.d/custom")
 
@@ -132,7 +133,6 @@
 
 (require 'setup-org)
 (require 'setup-python)
-(require 'setup-csharp)
 (require 'setup-rust)
 (require 'setup-dap)
 
@@ -159,11 +159,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default))
- '(org-agenda-files nil)
  '(package-selected-packages
-   '(which-key treemacs-all-the-icons treemacs-magit dap-mode helm-lsp docstr lsp-treemacs lsp-ui lsp-mode hl-todo highlight-doxygen all-the-icons qt-pro-mode rustic csharp-mode elpy pyvenv org-bullets iedit anzu ws-butler dtrt-indent clean-aindent-mode yasnippet undo-tree volatile-highlights counsel ivy helm-projectile helm-swoop helm cmake-mode magit drag-stuff treemacs ace-window zygospore projectile company modus-themes yaml-mode protobuf-mode use-package)))
+   '(edit-indirect toml-mode go-mode json-mode which-key treemacs-magit dap-mode helm-lsp docstr lsp-treemacs lsp-ui lsp-mode hl-todo highlight-doxygen all-the-icons qt-pro-mode elpy pyvenv org-bullets iedit anzu ws-butler dtrt-indent clean-aindent-mode yasnippet undo-tree helm-swoop helm cmake-mode magit drag-stuff treemacs ace-window zygospore modus-themes protobuf-mode)))
 
 ;; (custom-set-faces
 ;;  ;; custom-set-faces was added by Custom.
@@ -180,17 +177,23 @@
 ;;  '(org-level-7 ((t (:inherit default :weight bold :foreground "#bbc2cf" :font "Verdana"))))
 ;;  '(org-level-8 ((t (:inherit default :weight bold :foreground "#bbc2cf" :font "Verdana")))))
 
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(org-document-title ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif" :height 1.5 :underline nil))))
+;;  '(org-level-1 ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif" :height 1.75))))
+;;  '(org-level-2 ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif" :height 1.5))))
+;;  '(org-level-3 ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif" :height 1.25))))
+;;  '(org-level-4 ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif" :height 1.1))))
+;;  '(org-level-5 ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif"))))
+;;  '(org-level-6 ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif"))))
+;;  '(org-level-7 ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif"))))
+;;  '(org-level-8 ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-document-title ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif" :height 1.5 :underline nil))))
- '(org-level-1 ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif" :height 1.75))))
- '(org-level-2 ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif" :height 1.5))))
- '(org-level-3 ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif" :height 1.25))))
- '(org-level-4 ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif" :height 1.1))))
- '(org-level-5 ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif"))))
- '(org-level-6 ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif"))))
- '(org-level-7 ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif"))))
- '(org-level-8 ((t (:inherit default :weight bold :foreground "#bbc2cf" :family "Sans Serif")))))
+ )
